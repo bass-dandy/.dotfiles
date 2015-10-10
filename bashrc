@@ -5,8 +5,8 @@ case $- in
 esac
 
 # load xresources
-[[ -f ~/.Xdefaults ]] && xrdb -merge ~/.Xdefaults
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+[[ -f Xdefaults ]] && xrdb -merge Xdefaults
+[[ -f Xresources ]] && xrdb -merge Xresources
 
 # run i3 on startup
 pidof -c i3 > /dev/null || exec i3 & > /dev/null
@@ -32,23 +32,18 @@ shopt -s globstar
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
 esac
 
 # Load alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f bash_aliases ]; then
+    . bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
