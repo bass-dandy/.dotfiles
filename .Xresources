@@ -1,0 +1,63 @@
+! font
+xterm*faceName: inconsolata:size=14:antialias=true
+
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+xterm*background: #2f2628
+xterm*foreground: #f5ded6
+
+! --- standard colors ---
+
+! black
+xterm*color0: #64292f
+
+! bright_black
+xterm*color8: #72373d
+
+! red
+xterm*color1: #8d3743
+
+! bright_red
+xterm*color9: #8d3743
+
+! green
+xterm*color2: #78523d
+
+! bright_green
+xterm*color10: #78523d
+
+! yellow
+xterm*color3: #8d4c3d
+
+! bright_yellow
+xterm*color11: #8d4c3d
+
+! blue
+xterm*color4: #723d58
+
+! bright_blue
+xterm*color12: #723d58
+
+! magenta
+xterm*color5: #873758
+
+! bright_magenta
+xterm*color13: #873758
+
+! cyan
+xterm*color6: #725252
+
+! bright_cyan
+xterm*color14: #725252
+
+! white
+xterm*color7: #995f65
+
+! bright_white
+xterm*color15: #a96e74
