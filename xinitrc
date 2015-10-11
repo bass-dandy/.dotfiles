@@ -22,5 +22,5 @@ xrdb -merge ~/.Xresources
 # exec startxfce4
 # ...or the Window Manager of your choice
 
-sh ~/.fehbg &
+sh ~/.fehbg
 exec i3
