@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/v/filer4b/v38q001/ctdinh93/.vim'
+let g:netrw_dirhist_2='/v/filer4b/v38q001/ctdinh93/oop/cs371p-collatz/html'
+let g:netrw_dirhist_3='/v/filer4b/v38q001/ctdinh93/oop/p2/cs371p-voting/.git'
+let g:netrw_dirhist_4='/v/filer4b/v38q001/ctdinh93/439/pintos/src/threads'
+let g:netrw_dirhist_5='/v/filer4b/v38q001/ctdinh93/439/pintos2/src/userprog/build'
+let g:netrw_dirhist_6='/v/filer4b/v38q001/ctdinh93/arch/ctdinh93_cs350c_s15_p7'
+let g:netrw_dirhist_7='/v/filer4b/v38q001/ctdinh93/arch/ctdinh93_cs350c_s15_p4'

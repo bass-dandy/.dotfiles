@@ -6,13 +6,15 @@
 
 ########## Variables
 
-dir=~/.config/                      # dotfiles directory
-olddir=~/.config/backup/            # old dotfiles backup directory
-files="bashrc Xdefaults Xresources" # list of files/folders to symlink in homedir
+dir=~/.dotfiles/    # dotfiles directory
+olddir=$dir/backup/ # old dotfiles backup directory
+
+# list of files/folders to symlink in homedir
+files="bashrc Xdefaults Xresources i3 vim vimrc" 
 
 ##########
 
-# create dotfiles_old in homedir
+# create backup folder in dotfiles directory
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
 echo "...done"
