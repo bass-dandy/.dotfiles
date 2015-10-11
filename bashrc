@@ -5,8 +5,8 @@ case $- in
 esac
 
 # load xresources
-[[ -f Xdefaults ]] && xrdb -merge Xdefaults
-[[ -f Xresources ]] && xrdb -merge Xresources
+[[ -f ~/.Xdefaults ]] && xrdb -merge ~/.Xdefaults
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
@@ -39,8 +39,8 @@ xterm*|rxvt*)
 esac
 
 # Load alias definitions.
-if [ -f bash_aliases ]; then
-    . bash_aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
