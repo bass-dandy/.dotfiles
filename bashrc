@@ -8,9 +8,6 @@ esac
 [[ -f Xdefaults ]] && xrdb -merge Xdefaults
 [[ -f Xresources ]] && xrdb -merge Xresources
 
-# run i3 on startup
-pidof -c i3 > /dev/null || exec i3 & > /dev/null
-
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
