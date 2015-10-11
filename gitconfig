@@ -1,5 +1,15 @@
 [user]
 	email = ctdinh93@gmail.com
 	name = Christian Dinh
+
 [push]
 	default = simple
+
+[color]
+	ui = true
+
+[url "https://github.com/"]
+	insteadof = gh:
+
+[url "https://bitbucket.org/"]
+	insteadof = bb:
