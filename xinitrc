@@ -13,6 +13,10 @@ fi
 
 [[ -f /usr/bin/VBoxClient-all ]] && /usr/bin/VBoxClient-all
 
+# load xresources
+xrdb -merge ~/.Xdefaults
+xrdb -merge ~/.Xresources
+
 # exec gnome-session
 # exec startkde
 # exec startxfce4

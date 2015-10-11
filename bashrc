@@ -4,9 +4,9 @@ case $- in
       *) return;;
 esac
 
-# load xresources
-[[ -f ~/.Xdefaults ]] && xrdb -merge ~/.Xdefaults
-[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+# exports
+export TERM=xterm-256color
+export EDITOR=vim
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
