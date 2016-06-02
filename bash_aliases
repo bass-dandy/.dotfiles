@@ -1,13 +1,25 @@
+# Make everything colorful
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
-
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
+# ssh shortcuts
 alias lab='ssh -X ctdinh93@linux.cs.utexas.edu'
+
+# Fuck python 2
+alias python='python3'
+alias pip='pip3'
+
+# Get pid by process name
+alias pid='ps -deafww | grep -v "grep" | grep -i'
+
+# Verbosely make parent dirs if they don't exist
+alias mkdir='mkdir -pv'
+
+# Shortcuts
+alias su='sudo'
+alias ..='cd ..'
+alias ...='cd ../..'
