@@ -22,10 +22,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -37,6 +33,15 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+# enable powerline shell
+function _update_ps1() {
+    PS1="$(~/.powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 # Load alias definitions.
 if [ -f ~/.bash_aliases ]; then
@@ -53,3 +58,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Civitas-specific
+ulimit -n 65536
+ulimit -u 2048
