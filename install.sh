@@ -41,4 +41,4 @@ fi
 
 mv ~/.$bashrc_name $olddir
 echo "Creating symlink to $bashrc_name in home directory."
-ln -s $dir/bashrc ~/.bashrc_name
+ln -s $dir/bashrc ~/.$bashrc_name
