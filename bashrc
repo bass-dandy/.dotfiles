@@ -49,6 +49,9 @@ fi
 ulimit -n 65536
 ulimit -u 2048
 
+# Keep ssh credentials when ssh-ing
+ssh-add
+
 # enable powerline shell
 function _update_ps1() {
     PS1="$(~/.powerline-shell/powerline-shell.py $? 2> /dev/null)"
