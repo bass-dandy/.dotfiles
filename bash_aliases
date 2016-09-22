@@ -1,11 +1,3 @@
-if [[ $1 == 'osx' ]]; then
-    # osx-specific
-    alias ls='ls -FG'
-else
-    # linux-specific
-    alias ls='ls --color=auto'
-fi
-
 # Make everything colorful
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -27,3 +19,12 @@ alias lsa='ls -a'
 alias clera='clear'
 alias celar='clear'
 alias c='clear'
+
+if [[ $1 == 'osx' ]]; then
+    # osx-specific
+    alias ls='ls -FG'
+else
+    # linux-specific
+    alias ls='ls --color=auto'
+fi
+

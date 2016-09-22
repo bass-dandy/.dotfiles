@@ -34,20 +34,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable powerline shell
-function _update_ps1() {
-    PS1="$(~/.powerline-shell/powerline-shell.py $? 2> /dev/null)"
-}
-
-if [ "$TERM" != "linux" ]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
-
-# Load alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -59,6 +45,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Civitas-specific
+# Transcend resource limits
 ulimit -n 65536
 ulimit -u 2048
+
+# enable powerline shell
+function _update_ps1() {
+    PS1="$(~/.powerline-shell/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
+# Different strokes for different folks
+if [ -f ~/.bash_aliases ]; then
+    if [ $(basename $BASH_SOURCE == ".profile") ]; then
+        # We're on OSX maybe
+        . ~/.bash_aliases osx
+    else
+        # We're on linux maybe
+        . ~/.bash_aliases
+    fi
+fi
+
