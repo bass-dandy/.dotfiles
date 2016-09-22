@@ -1,8 +1,13 @@
 "           VIM CONFIG FILE
 "---------------------------------------
 
+set backspace=indent,eol,start
+
 " Enable mouse
 set mouse=a
+
+" Make whitespace not stupid when pasting
+set paste
 
 " tab = 4 spaces
 set smartindent
