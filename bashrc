@@ -60,7 +60,7 @@ fi
 
 # Different strokes for different folks
 if [ -f ~/.bash_aliases ]; then
-    if [ $(basename $BASH_SOURCE == ".profile") ]; then
+    if [ $(basename $BASH_SOURCE) == ".profile" ]; then
         # We're on OSX maybe
         . ~/.bash_aliases osx
     else
