@@ -22,6 +22,11 @@ alias c='clear'
 
 if [[ $1 == 'osx' ]]; then
     # osx-specific
+    getPidOnPort() {
+        lsof -t -i tcp:$1
+    }
+    alias onport='getPidOnPort'
+
     alias ls='ls -FG'
 else
     # linux-specific
