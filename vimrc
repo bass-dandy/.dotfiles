@@ -84,7 +84,8 @@ endif
 set background=dark
 
 " Available colorschemes
-colorscheme vice
+colorscheme one
+"colorscheme vice
 
 " Make comments italic if italics enabled in term
 highlight Comment cterm=italic
@@ -122,6 +123,7 @@ let g:airline#extensions#tabline#enabled = 0
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Airline theme
+let g:airline_theme = 'one'
 "let g:airline_theme = 'vice'
 
 " fugitive integration with airline (fugitive is git wrapper)
