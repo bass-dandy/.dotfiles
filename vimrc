@@ -1,26 +1,35 @@
-"           VIM CONFIG FILE
-"---------------------------------------
+" Run pathogen
+execute pathogen#infect()
 
 set backspace=indent,eol,start
+
+" Fly through buffers
+nnoremap gb :ls<CR>:b<Space>
+set hid
 
 " Enable mouse
 set mouse=a
 
-" Make whitespace not stupid when pasting
-set paste
+" Show tabs
+set list
+set listchars=tab:»·
+
+" Auto close braces, parens, brackets, quotes
+inoremap { {}<left>
+inoremap [ []<left>
+inoremap ( ()<left>
+inoremap ' ''<left>
+inoremap " ""<left>
 
 " tab = 4 spaces
+"set expandtab
 set smartindent
 set tabstop=4
 set shiftwidth=4
-set expandtab
 set softtabstop=4
 
 " Enable line numbers
 set number
-
-" Keeps paste buffer when switching file buffers
-set hid
 
 " Turn on syntax highlighting
 syntax on
@@ -49,50 +58,55 @@ nnoremap <CR> :noh<CR><CR>
 "set lbr
 "set wrap
 
+" Highlight text over 80 columns wide
+"highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+"match OverLength /\%80v.*/
+
 " Better command-line completion
 set wildmenu
 
 " Show partial commands in the last line of the screen
 "set showcmd
 
+"----------------------------
+"     Colorscheme stuff
+"----------------------------
+
 " Set to 256 colors
 set t_Co=256
 
-" Colorscheme stuff if any
-"colorscheme 256-jungle
-colorscheme jellybeans
-"colorscheme kolor
-"colorscheme molokai
-"colorscheme wombat256mod
-set background=light
+" enable true color
+if (has("termguicolors"))
+	set termguicolors
+endif
 
-" Highlight text over 80 columns wide
-" highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-" match OverLength /\%80v.*/
+" dark
+set background=dark
 
-"       Plugin stuff
+" Available colorschemes
+colorscheme vice
+
+" Make comments italic if italics enabled in term
+highlight Comment cterm=italic
+
+"----------------------------
+"          Plugins
 "----------------------------
 
-"***** indentLine
-set list lcs=tab:\|\
-let g:indentLine_char='|'
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#A4E57E'
-let g:indentLine_enabled = 1
+" ***** vim-airline ***** "
 
-"***** vim-airline
 " Customized sections of statusbar
 function! AirlineInit()
-    let g:airline_section_a = airline#section#create(['mode',' ','branch'])
-    let g:airline_section_b = airline#section#create(['ffenc', 'hunks'])
-    let g:airline_section_y = airline#section#create(['L:%l', ' ', 'C:%c'])
-    let g:airline_section_z = airline#section#create_right(['%p%%'])
+	let g:airline_section_a = airline#section#create(['mode',' ','branch'])
+	let g:airline_section_b = airline#section#create(['ffenc', 'hunks'])
+	let g:airline_section_y = airline#section#create(['L:%l', ' ', 'C:%c'])
+	let g:airline_section_z = airline#section#create_right(['%p%%'])
 
-    " Displays ASCII value of char hovered over by cursor in hex
-    "let g:airline_section_z = airline#section#create_right(['%B'])
+	" Displays ASCII value of char hovered over by cursor in hex
+	"let g:airline_section_z = airline#section#create_right(['%B'])
 
-    "let g:airline_section_b = '%{strftime("%c")}'
-    "let g:airline_section_y = 'BN: %{bufnr("%")}'
+	"let g:airline_section_b = '%{strftime("%c")}'
+	"let g:airline_section_y = 'BN: %{bufnr("%")}'
 endfunction
 autocmd VimEnter * call AirlineInit()
 
@@ -103,17 +117,40 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " Tabline options
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 
+" Airline theme
+"let g:airline_theme = 'vice'
+
 " fugitive integration with airline (fugitive is git wrapper)
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = "|"
 let g:airline#extensions#branch#enabled = 1
 "let g:airline#extensions#branch#empty_message = ''
 
+" ***** Syntastic ***** "
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_warning_symbol = '⚠'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
