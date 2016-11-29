@@ -1,6 +1,9 @@
 " Run pathogen
 execute pathogen#infect()
 
+set nocompatible
+set noshowmode
+
 set backspace=indent,eol,start
 
 " Fly through buffers
@@ -50,6 +53,9 @@ set smartcase
 " Highlight search results
 set hlsearch
 
+" Reduce update time for plugins
+set updatetime=250
+
 " Allows you to remove highlighting after done with search
 nnoremap <CR> :noh<CR><CR>
 
@@ -96,43 +102,60 @@ highlight Comment cterm=italic
 
 " ***** vim-airline ***** "
 
-" Customized sections of statusbar
-function! AirlineInit()
-	let g:airline_section_a = airline#section#create(['mode',' ','branch'])
-	let g:airline_section_b = airline#section#create(['ffenc', 'hunks'])
-	let g:airline_section_y = airline#section#create(['L:%l', ' ', 'C:%c'])
-	let g:airline_section_z = airline#section#create_right(['%p%%'])
-
-	" Displays ASCII value of char hovered over by cursor in hex
-	"let g:airline_section_z = airline#section#create_right(['%B'])
-
-	"let g:airline_section_b = '%{strftime("%c")}'
-	"let g:airline_section_y = 'BN: %{bufnr("%")}'
-endfunction
-autocmd VimEnter * call AirlineInit()
-
-set laststatus=2    " Allows statusbar to show up with one window
-
-" Custom Seperator for statusbar
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-
-" Tabline options
-let g:airline#extensions#tabline#enabled = 0
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
-" Airline theme
-let g:airline_theme = 'one'
-"let g:airline_theme = 'vice'
-
-" fugitive integration with airline (fugitive is git wrapper)
+" Custom symbols
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = "|"
+
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_left_alt_sep = '|'
+let g:airline_right_alt_sep = '|'
+
+" Allows statusbar to show up with one window
+set laststatus=2
+
+" Toggles
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
-"let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_detect_crypt=0
+let g:airline_detect_spell=0
+
+" Custom statusline
+function! AirlineInit()
+	let g:airline_section_a = airline#section#create_left([''])
+	let g:airline_section_b = airline#section#create([''])
+	let g:airline_section_c = airline#section#create(['file'])
+	let g:airline_section_x = airline#section#create(['%l/%L : %3c'])
+	let g:airline_section_y = airline#section#create([''])
+	let g:airline_section_y = airline#section#create(['branch', ' ', 'hunks'])
+	let g:airline_section_z = airline#section#create_left(['mode', 'paste'])
+	let g:airline_section_error = airline#section#create(['syntastic'])
+	let g:airline_section_warning = airline#section#create(['whitespace'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+let g:airline_extensions = ['branch', 'hunks', 'syntastic']
+
+" ***** CtrlP *****"
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" ***** NERDTree ***** "
+
+" Open on start
+""autocmd vimenter * NERDTree | wincmd p
+
+" Close when last window is a nerd tree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " ***** Syntastic ***** "
 
