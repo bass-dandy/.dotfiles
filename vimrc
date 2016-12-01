@@ -59,20 +59,16 @@ set updatetime=250
 " Allows you to remove highlighting after done with search
 nnoremap <CR> :noh<CR><CR>
 
-" Visual word wrapping
-"set wm=4
-"set lbr
-"set wrap
-
-" Highlight text over 80 columns wide
-"highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-"match OverLength /\%80v.*/
+" Wrap lines indented at sensible breakpoints rather than scrolling horizontally
+set wrap
+set linebreak
+set breakindent
 
 " Better command-line completion
 set wildmenu
 
-" Show partial commands in the last line of the screen
-"set showcmd
+" Auto add current file suffix to gf searches
+autocmd BufEnter * let &suffixesadd=expand('%:e')
 
 "----------------------------
 "     Colorscheme stuff
