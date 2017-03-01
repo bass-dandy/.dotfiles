@@ -17,12 +17,8 @@ set mouse=a
 set list
 set listchars=tab:»\  " ends with space
 
-" Auto close braces, parens, brackets, quotes
-inoremap { {}<left>
-inoremap [ []<left>
-inoremap ( ()<left>
-inoremap ' ''<left>
-inoremap " ""<left>
+" jk = esc in insert mode
+inoremap jk <esc>
 
 " tab = 4 spaces
 "set expandtab
@@ -162,7 +158,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✗'
