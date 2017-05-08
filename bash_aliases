@@ -9,6 +9,9 @@ alias pid='ps aux | awk '"'"'{cmd=$11; for(i=12;i<=NF;i++){cmd=cmd" "$i}; printf
 # Verbosely make parent dirs if they don't exist
 alias mkdir='mkdir -pv'
 
+# Delete all .swp files in current dir and subdirs
+alias rmswp='find . -name \*.swp -type f -delete'
+
 # Shortcuts
 alias su='sudo'
 alias ..='cd ..'
