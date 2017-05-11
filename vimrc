@@ -184,7 +184,7 @@ endfunction
 function FindLocalEslint()
 	let b:cdinh_eslint_exec_found = 0
 	let l:current_folder = expand('%:p:h')
-	while b:cdinh_eslint_exec_found == 0 && l:current_folder != ''
+	while b:cdinh_eslint_exec_found == 0 && l:current_folder != '/'
 		call FindAndSetEslintExec(l:current_folder)
 		let l:current_folder = fnamemodify(l:current_folder, ':h')
 	endwhile
