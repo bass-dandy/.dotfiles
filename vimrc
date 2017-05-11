@@ -171,24 +171,23 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 " Local linter support
 
-let g:syntastic_javascript_checkers = []
+let g:syntastic_javascript_checkers = ['eslint']
 
-function CheckJavaScriptLinter(filepath, linter)
-	if exists('b:syntastic_checkers')
-		return
-	endif
-	if filereadable(a:filepath)
-		let b:syntastic_checkers = [a:linter]
-		let {'b:syntastic_' . a:linter . '_exec'} = a:filepath
+function FindAndSetEslintExec(current_folder)
+	let l:filepath = a:current_folder . '/node_modules/.bin/eslint'
+	if filereadable(l:filepath)
+		let b:syntastic_javascript_eslint_exec = l:filepath
+		let b:cdinh_eslint_exec_found = 1
 	endif
 endfunction
 
-function SetupJavaScriptLinter()
+function FindLocalEslint()
+	let b:cdinh_eslint_exec_found = 0
 	let l:current_folder = expand('%:p:h')
-	let l:bin_folder = fnamemodify(syntastic#util#findFileInParent('package.json', l:current_folder), ':h')
-	let l:bin_folder = l:bin_folder . '/node_modules/.bin/'
-	call CheckJavaScriptLinter(l:bin_folder . 'standard', 'standard')
-	call CheckJavaScriptLinter(l:bin_folder . 'eslint', 'eslint')
+	while b:cdinh_eslint_exec_found == 0 && l:current_folder != ''
+		call FindAndSetEslintExec(l:current_folder)
+		let l:current_folder = fnamemodify(l:current_folder, ':h')
+	endwhile
 endfunction
 
-autocmd FileType javascript call SetupJavaScriptLinter()
+autocmd FileType javascript call FindLocalEslint()
