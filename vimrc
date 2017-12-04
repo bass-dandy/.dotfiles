@@ -153,6 +153,9 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" show hidden files by default
+let g:NERDTreeShowHidden = 1
+
 " ***** Syntastic ***** "
 
 set statusline+=%#warningmsg#
