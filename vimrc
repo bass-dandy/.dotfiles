@@ -94,6 +94,12 @@ colorscheme one
 " Make comments italic if italics enabled in term
 highlight Comment cterm=italic
 
+" fix background issues on tmux
+set t_ut=
+
+" highlight .js files as .jsx
+autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+
 "----------------------------
 "          Plugins
 "----------------------------
