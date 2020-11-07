@@ -1,6 +1,6 @@
-backup
-powerline-shell/
+/backup/
+/powerline-shell/
+/vim/bundle/*/
 .DS_Store
-vim/bundle/*/
 *.swp
 *.swo

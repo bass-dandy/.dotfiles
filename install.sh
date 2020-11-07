@@ -17,7 +17,7 @@ else
 fi
 
 # list of files/folders to symlink in homedir
-files="aliases gitconfig vim vimrc tmux.conf .config"
+files="aliases gitconfig vim vimrc tmux.conf config"
 
 # change to the dotfiles directory
 echo "Changing to $dir"
