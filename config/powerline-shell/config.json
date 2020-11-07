@@ -3,11 +3,11 @@
     "username", 
     "ssh", 
     "cwd", 
-    "git", 
-    "hg", 
-    "jobs"
+    "read_only",
+    "git"
   ],
   "cwd": {
     "mode": "dironly"
-  }
+  },
+  "theme": "~/.config/powerline-shell/themes/blazer.py"
 }
