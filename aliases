@@ -16,6 +16,7 @@ alias rmswp='find . -name \*.swp -type f -delete'
 alias su='sudo'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ls='ls --color=auto -F'
 alias lsa='ls -a'
 
 # Typos
@@ -23,16 +24,7 @@ alias clera='clear'
 alias celar='clear'
 alias c='clear'
 
-if [[ $1 == 'osx' ]]; then
-    # osx-specific
-    getPidOnPort() {
-        lsof -t -i tcp:$1
-    }
-    alias onport='getPidOnPort'
-
-    alias ls='ls -FG'
-else
-    # linux-specific
-    alias ls='ls --color=auto'
-fi
-
+getPidOnPort() {
+    lsof -t -i tcp:$1
+}
+alias onport='getPidOnPort'

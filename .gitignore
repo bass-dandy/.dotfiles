@@ -1,3 +1,6 @@
 backup
-pulse
+powerline-shell/
+.DS_Store
+vim/bundle/*
 *.swp
+*.swo

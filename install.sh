@@ -1,44 +1,66 @@
 #!/bin/bash
 ############################
-# .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
 ############################
 
-########## Variables
+dir=~/.dotfiles        # dotfiles directory
+backupdir=$dir/backup/ # old dotfiles backup directory
 
-dir=~/.dotfiles     # dotfiles directory
-olddir=$dir/backup/ # old dotfiles backup directory
+# determine profile filename
+if test -n "$ZSH_VERSION"; then
+    profile_name="zshrc"
+elif test -n "$BASH_VERSION"; then
+    profile_name="bashrc"
+else
+    echo "Error: not running in zsh or bash. Aborting."
+    exit
+fi
 
 # list of files/folders to symlink in homedir
-files="bash_aliases gitconfig vim vimrc powerline-shell tmux.conf" 
-
-##########
-
-# create backup folder in dotfiles directory
-echo "Creating $olddir for backup of any existing dotfiles in ~"
-mkdir -p $olddir
-echo "...done"
+files="aliases gitconfig vim vimrc tmux.conf .config"
 
 # change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
+echo "Changing to $dir"
+cd $dir || echo "Error: .dotfiles/ must be cloned into ~" && exit
 echo "...done"
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-echo "Moving any existing dotfiles from ~ to $olddir"
+# create backup folder in dotfiles directory
+echo "Creating $backupdir for backup of any existing dotfiles in ~"
+mkdir -p $backupdir
+echo "...done"
+
+# move any existing dotfiles in ~ to backup directory, then create symlinks 
+echo "Moving any existing dotfiles from ~ to $backupdir"
 for file in $files; do
-    mv ~/.$file $olddir
-    echo "Creating symlink to $file in home directory."
+    mv ~/.$file $backupdir
+    echo "Creating symlink to $file in ~"
     ln -s $dir/$file ~/.$file
 done
 
-# osx and linux use different filenames T_T
-if [[ $1 == 'osx' ]]; then
-    bashrc_name="profile"
-else
-    bashrc_name="bashrc"
-fi
+# profile is a special case since it requires a different name depending on the shell and OS
+mv ~/.$profile_name $backupdir
+echo "Creating symlink to $profile_name in ~"
+ln -s $dir/profile ~/.$profile_name
+echo "...done"
 
-mv ~/.$bashrc_name $olddir
-echo "Creating symlink to $bashrc_name in home directory."
-ln -s $dir/bashrc ~/.$bashrc_name
+# install external deps
+git clone https://github.com/b-ryan/powerline-shell
+
+# install vim plugins
+echo "Changing to $dir/vim/bundle/"
+cd $dir/vim/bundle/ || echo "Error changing to $dir/vim/bundle/, aborting" && exit
+echo "...done"
+
+git clone https://github.com/dense-analysis/ale
+git clone https://github.com/preservim/nerdtree
+git clone https://github.com/Xuyuanp/nerdtree-git-plugin
+git clone https://github.com/vim-airline/vim-airline
+git clone https://github.com/tpope/vim-fugitive
+git clone https://github.com/airblade/vim-gitgutter
+git clone https://github.com/pangloss/vim-javascript
+git clone https://github.com/MaxMEllon/vim-jsx-pretty
+git clone https://github.com/HerringtonDarkholme/yats.vim
+echo "...done"
+
+echo "Changing to ~. Refer to $dir/powerline-shell/README.md to complete installation."
+cd ~
