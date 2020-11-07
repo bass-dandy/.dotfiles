@@ -1,6 +1,6 @@
 backup
 powerline-shell/
 .DS_Store
-vim/bundle/*
+vim/bundle/*/
 *.swp
 *.swo
