@@ -1,6 +1,9 @@
 # If not running interactively, don't do anything
 [[ $- == *i* ]] || return
 
+# print the weather
+curl "wttr.in?format=3"
+
 # shell-specific configs
 if test -n "$ZSH_VERSION"; then
     # don't put duplicate lines or lines starting with space in the history

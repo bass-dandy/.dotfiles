@@ -28,3 +28,6 @@ getPidOnPort() {
     lsof -t -i tcp:$1
 }
 alias onport='getPidOnPort'
+
+# Get the weather!
+alias wttr='curl wttr.in'
