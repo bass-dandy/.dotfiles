@@ -57,9 +57,7 @@ git clone https://github.com/Xuyuanp/nerdtree-git-plugin
 git clone https://github.com/vim-airline/vim-airline
 git clone https://github.com/tpope/vim-fugitive
 git clone https://github.com/airblade/vim-gitgutter
-git clone https://github.com/pangloss/vim-javascript
-git clone https://github.com/MaxMEllon/vim-jsx-pretty
-git clone https://github.com/HerringtonDarkholme/yats.vim
+git clone https://github.com/sheerun/vim-polyglot
 echo "...done"
 
 echo "Changing to ~. Refer to $dir/powerline-shell/README.md to complete installation."
