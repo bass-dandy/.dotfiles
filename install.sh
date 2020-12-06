@@ -21,7 +21,7 @@ files="aliases gitconfig vim vimrc tmux.conf config hushlogin"
 
 # change to the dotfiles directory
 echo "Changing to $dir"
-cd $dir || echo "Error: .dotfiles/ must be cloned into ~" && exit
+cd $dir || ( echo "Error: .dotfiles/ must be cloned into ~" && exit )
 echo "...done"
 
 # create backup folder in dotfiles directory
@@ -48,7 +48,7 @@ git clone https://github.com/b-ryan/powerline-shell
 
 # install vim plugins
 echo "Changing to $dir/vim/bundle/"
-cd $dir/vim/bundle/ || echo "Error changing to $dir/vim/bundle/, aborting" && exit
+cd $dir/vim/bundle/ || ( echo "Error changing to $dir/vim/bundle/, aborting" && exit )
 echo "...done"
 
 git clone https://github.com/dense-analysis/ale
