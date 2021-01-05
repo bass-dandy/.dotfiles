@@ -27,6 +27,7 @@ fi
 
 # exports
 export EDITOR=vim
+export TERM=xterm-256color-italic
 
 # Keep ssh credentials when ssh-ing
 ssh-add -q

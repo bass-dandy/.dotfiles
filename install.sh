@@ -38,6 +38,9 @@ echo "Creating symlink to bashrc in ~"
 ln -s $dir/profile ~/.bashrc
 echo "...done"
 
+# register xterm-256color-italic
+tic -x ./iterm2/xterm-256color-italic.terminfo
+
 # install external deps
 git clone https://github.com/b-ryan/powerline-shell
 
