@@ -16,7 +16,7 @@ alias rmswp='find . -name \*.swp -type f -delete'
 alias su='sudo'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ls='ls --color=auto -F'
+alias ls='ls -G'
 alias lsa='ls -a'
 
 # Typos

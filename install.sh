@@ -6,16 +6,6 @@
 dir=~/.dotfiles        # dotfiles directory
 backupdir=$dir/backup/ # old dotfiles backup directory
 
-# determine profile filename
-if test -n "$ZSH_VERSION"; then
-    profile_name="zshrc"
-elif test -n "$BASH_VERSION"; then
-    profile_name="bashrc"
-else
-    echo "Error: not running in zsh or bash. Aborting."
-    exit
-fi
-
 # list of files/folders to symlink in homedir
 files="aliases gitconfig vim vimrc tmux.conf config hushlogin"
 
@@ -37,10 +27,15 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-# profile is a special case since it requires a different name depending on the shell and OS
-mv ~/.$profile_name $backupdir
-echo "Creating symlink to $profile_name in ~"
-ln -s $dir/profile ~/.$profile_name
+# profile is a special case since it requires a different name depending on the shell
+mv ~/.zshrc $backupdir
+echo "Creating symlink to zshrc in ~"
+ln -s $dir/profile ~/.zshrc
+echo "...done"
+
+mv ~/.bashrc $backupdir
+echo "Creating symlink to bashrc in ~"
+ln -s $dir/profile ~/.bashrc
 echo "...done"
 
 # install external deps
