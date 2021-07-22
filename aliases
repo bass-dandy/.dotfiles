@@ -30,4 +30,6 @@ getPidOnPort() {
 alias onport='getPidOnPort'
 
 # Get the weather!
-alias wttr='curl wttr.in'
+alias wttr='curl wttr.in/nyc'
+
+alias bers='bundle exec rails server'
