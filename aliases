@@ -19,6 +19,18 @@ alias ...='cd ../..'
 alias ls='ls -F -G'
 alias lsa='ls -a'
 
+# Git
+alias gco='git checkout'
+alias gcm='git commit -m'
+alias gc='git commit'
+alias gb='git branch'
+alias gd='git branch -D'
+alias ga='git add'
+alias gr='git rebase -i'
+alias gp='git pull'
+alias gm='git merge'
+alias gl='git log'
+
 # Typos
 alias clera='clear'
 alias celar='clear'
@@ -32,4 +44,6 @@ alias onport='getPidOnPort'
 # Get the weather!
 alias wttr='curl wttr.in/nyc'
 
+# codecademy
 alias bers='bundle exec rails server'
+alias pas='yarn nx run portal-app:start'

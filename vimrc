@@ -169,8 +169,12 @@ let g:NERDTreeShowHidden = 1
 
 " ***** Ale ***** "
 
+let g:ale_set_balloons = 1
 let g:ale_sign_error = ' ●'
 let g:ale_sign_warning = ' ○'
+
+" ***** Polyglot ***** "
+let g:vim_svelte_plugin_use_typescript = 1
 
 " go to next error with ctrl+e
 nmap <silent> <C-e> <Plug>(ale_next_wrap)
