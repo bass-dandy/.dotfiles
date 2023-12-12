@@ -13,9 +13,9 @@ alias mkdir='mkdir -pv'
 alias rmswp='find . -name \*.swp -type f -delete'
 
 # Shortcuts
-alias su='sudo'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ls='ls -F -G'
 alias lsa='ls -a'
 
