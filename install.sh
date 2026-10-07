@@ -56,7 +56,17 @@ git clone https://github.com/vim-airline/vim-airline
 git clone https://github.com/tpope/vim-fugitive
 git clone https://github.com/airblade/vim-gitgutter
 git clone https://github.com/sheerun/vim-polyglot
+git clone https://github.com/tomtom/tcomment_vim
+git clone https://github.com/Raimondi/delimitMate
+git clone https://github.com/editorconfig/editorconfig-vim
+git clone https://github.com/ku1ik/vim-pasta
+git clone https://github.com/ryanoasis/vim-devicons
 echo "...done"
 
-echo "Changing to ~. Refer to $dir/powerline-shell/README.md to complete installation."
+echo "Changing to ~."
 cd ~
+
+echo "...done. TODO:"
+echo "- Refer to $dir/powerline-shell/README.md to install powerline-shell."
+echo "- Download font from https://github.com/ryanoasis/nerd-fonts for powerline-shell and vim-devicons"
+echo "- brew install fzf once homebrew is installed"

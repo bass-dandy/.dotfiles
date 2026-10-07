@@ -172,6 +172,12 @@ let g:NERDTreeShowHidden = 1
 let g:ale_set_balloons = 1
 let g:ale_sign_error = ' ●'
 let g:ale_sign_warning = ' ○'
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+nmap gd :ALEGoToDefinition -tab<CR>
 
 " ***** Polyglot ***** "
 let g:vim_svelte_plugin_use_typescript = 1
@@ -181,3 +187,7 @@ nmap <silent> <C-e> <Plug>(ale_next_wrap)
 
 " Help YATS not shit itself (disable old regex engine)
 set re=0
+
+" enable fzf integration; note that you need to run brew install fzf
+set rtp+=/opt/homebrew/opt/fzf
+nnoremap <C-p> :<C-u>FZF<CR>
