@@ -178,6 +178,8 @@ let g:ale_fixers = {
 \   'css': ['prettier'],
 \}
 nmap gd :ALEGoToDefinition -tab<CR>
+nmap gr :ALEFindReferences<CR>
+nmap K :ALEHover<CR>
 
 " ***** Polyglot ***** "
 let g:vim_svelte_plugin_use_typescript = 1
